@@ -44,7 +44,11 @@ defmodule Gettext.Compiler do
 
       @doc false
       def __mix_recompile__? do
-        unquote(hash_po_files) != Gettext.Compiler.__hash__(unquote(priv))
+        result = unquote(hash_po_files) != Gettext.Compiler.__hash__(unquote(priv))
+
+        IO.inspect(result, label: "gettext __mix_recompile__?: ")
+
+        result
       end
 
       # Info about the Gettext backend.
